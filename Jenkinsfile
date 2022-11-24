@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+         stage ('git clone') {
+            steps {
+        echo "code is building"
+         git 'https://github.com/umahari/testing.git'
+            }
+        }
+        
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
