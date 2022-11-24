@@ -4,25 +4,22 @@ pipeline {
     stages {
         stage('build docker file') {
             steps {
-                sh 'sudo docker build . -t venkat5658/myproject:latest'
+                echo 'buid docker image'
+                sh 'sudo docker build --no cache -t 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo'
+                sh 'sudo docker push 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo
                
             }
         }
-      stage('docker hub push')
+      
+        stage('Deployment')
       {
        steps
         {
-          sh 'sudo docker login -u venkat5658 -p venkat5658@'
-          sh 'sudo docker push  venkat5658/myproject:latest'
-        }
-      } 
-        stage('kube deploy')
-      {
-       steps
-        {
-          sh 'sudo kubectl apply -f edu-dep.yaml'
-          sh 'sudo kubectl apply -f dep-svc.yaml'
-          sh 'sudo kubectl apply -f dep-ingress.yaml'
+            echo "Deployement"
+          sh 'sudo kubectl get svc '
+          sh 'sudo kubectl get nodes'
+          sh 'sudo kubectl get ns
+          sh 'sudo kubectl apply -f httpd-dep.yaml'
           sh 'sudo kubectl rollout restart deployment/httpd-deployment'
            
         }
