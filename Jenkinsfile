@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('build docker file') {
+        stage("build docker docker image") {
             steps {
                 echo 'buid docker image'
                 sh 'sudo docker build --no cache -t . 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo'
