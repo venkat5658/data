@@ -15,7 +15,7 @@ pipeline {
       {
        steps
         {
-            echo "Deployement"
+            echo "deployement"
           sh 'sudo kubectl get svc '
           sh 'sudo kubectl get nodes'
           sh 'sudo kubectl get ns
