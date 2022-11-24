@@ -1,4 +1,12 @@
-FROM httpd:2.4
-WORKDIR /usr/local/apache2/htdocs/
-COPY . /usr/local/apache2/htdocs/
-EXPOSE 8080
+FROM ubuntu
+
+
+
+COPY index.html /var/www/html/index.html
+
+WORKDIR /var/www/html
+
+EXPOSE 80:8080
+
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+
