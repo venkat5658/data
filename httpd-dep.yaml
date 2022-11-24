@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+  labels:
+    app: httpd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpd
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd-container
+        image: 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo
+        ports:
+        - containerPort: 8080
+        imagepullPolicy: Always
+       
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: httpd-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: httpd
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: 
+  name: ingress-httpd
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: httpd-service
+              port:
+                number: 8080
