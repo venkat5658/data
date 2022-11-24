@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'buid docker image'
                 sh 'sudo docker build --no cache -t . 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo'
-                sh 'sudo docker push 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo
+                sh 'sudo docker push 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test:demo'
                
             }
         }
