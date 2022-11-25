@@ -12,8 +12,8 @@ pipeline {
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
-                sh 'sudo docker build --no-cache -t 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test  .'
-                sh 'sudo docker push 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test '
+                sh 'docker login -u venkata5658 -p venkat5658@  .'
+                sh 'sudo docker push  venkat5658/httpd:2.4 '
                
             }
         }
