@@ -12,7 +12,7 @@ pipeline {
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
-                sh 'sudo docker build --no-cache -t public.ecr.aws/b9y2y3b4/new:demo .
+                sh 'sudo docker build --no-cache -t public.ecr.aws/b9y2y3b4/new:demo .'
                 sh 'sudo docker push public.ecr.aws/b9y2y3b4/new:demo'
                
             }
