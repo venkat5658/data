@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "buid docker image"
                 sh 'sudo docker build . -t venkat5658/httpd:2.4'
-                sh 'sudo docker login -u venkata5658 -p venkat5658@ '
+                sh 'sudo docker login -u venkat5658 -p venkat5658@ '
                 sh 'sudo docker push  venkat5658/httpd:2.4 '
                
             }
