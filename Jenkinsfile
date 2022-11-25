@@ -12,9 +12,9 @@ pipeline {
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
-                sh 'sudo docker build --no-cache -t public.ecr.aws/b9y2y3b4/new:demo .'
-                sh 'sudo docker push  public.ecr.aws/b9y2y3b4/new:demo'
-                sh ''
+                sh 'sudo docker build --no-cache -t public.ecr.aws/b9y2y3b4/new:demo .
+                sh 'sudo docker login aws ecr get-login-password --region ap-south-1| docker login --username AWS --password-stdin 010762572680.dkr.ecr.ap-south-1.amazonaws.com'
+                sh 'sudo docker push public.ecr.aws/b9y2y3b4/new:demo'
                
             }
         }
