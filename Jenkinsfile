@@ -8,16 +8,12 @@ pipeline {
          git 'https://github.com/venkat5658/data.git'
             }
         }
-        stage(docker build){
-            steps{
-                sh 'sudo docker build . -t venkat5658/httpd:2.4 '
-            }
-        }
         
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
-                sh 'docker login -u venkata5658 -p venkat5658@ '
+                sh 'sudo docker build . -t venkat5658/httpd:2.4'
+                sh 'sudo docker login -u venkata5658 -p venkat5658@ '
                 sh 'sudo docker push  venkat5658/httpd:2.4 '
                
             }
