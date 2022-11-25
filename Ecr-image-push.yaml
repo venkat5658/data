@@ -1,0 +1,7 @@
+- task: Docker@1
+  displayName: Build an image
+  inputs:
+    command: build
+    dockerfile: '**/Dockerfile'
+    buildContext: 'public.ecr.aws/b9y2y3b4/testing:demo'
+    tags: 'latest'
