@@ -13,8 +13,8 @@ pipeline {
             steps {
                 echo "buid docker image"
                 sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdinpublic.ecr.aws/b9y2y3b4/new'    
-                sh 'sudo docker build -t 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test .'
-                sh 'sudo docker push 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test '
+                sh 'sudo docker build -t public.ecr.aws/b9y2y3b4/new .'
+                sh 'sudo docker push public.ecr.aws/b9y2y3b4/new '
                
             }
         }
