@@ -1,4 +1,4 @@
 FROM httpd
-COPY ./index.html /var/www/html/htdocs
-WORKDIR /var/www/html
+WORKDIR /usr/local/apache2/htdocs/
+COPY . /usr/local/apache2/htdocs/
 EXPOSE 8080
