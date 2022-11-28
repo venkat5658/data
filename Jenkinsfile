@@ -14,7 +14,7 @@ pipeline {
                 echo "buid docker image"
                 
                 sh 'sudo docker build -t public.ecr.aws/b9y2y3b4/new:ubuntu .'
-                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/b9y2y3b4 public.ecr.aws/b9y2y3b4/new:ubuntu'
+                sh 'aws ecr-public get-login-password --region ap-south-1 | docker login --username AWS --password-stdin public.ecr.aws/b9y2y3b4 public.ecr.aws/b9y2y3b4/new:ubuntu'
                 sh 'sudo docker push public.ecr.aws/b9y2y3b4/new:ubuntu '
                
             }
