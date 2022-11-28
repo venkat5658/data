@@ -12,9 +12,9 @@ pipeline {
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
-                sh 'sudo docker build . -t venkat5658/httpd:2.4'
-                sh 'sudo docker login -u venkat5658 -p venkat5658@ '
-                sh 'sudo docker push  venkat5658/httpd:2.4 '
+                sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 010762572680.dkr.ecr.ap-south-1.amazonaws.com'
+                sh 'sudo docker build -t 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test .'
+                sh 'sudo docker push 010762572680.dkr.ecr.ap-south-1.amazonaws.com/test '
                
             }
         }
