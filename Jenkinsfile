@@ -13,9 +13,8 @@ pipeline {
             steps {
                 echo "buid docker image"
                 
-                sh 'sudo docker build -t public.ecr.aws/b9y2y3b4/demo:httpd .'
-             
-               
+                
+                sh 'sudo docker tag demo:latest public.ecr.aws/b9y2y3b4/demo:latest'
                 sh 'sudo docker push public.ecr.aws/b9y2y3b4/demo:httpd '
                
             }
