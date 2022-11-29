@@ -20,7 +20,7 @@ spec:
         image: public.ecr.aws/b9y2y3b4/demo:httpd
         ports:
         - containerPort: 8080
-        imagepullPolicy: always
+       
        
 ---
 kind: Service
