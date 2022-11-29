@@ -12,10 +12,10 @@ pipeline {
         stage('build docker docker image') {
             steps {
                 echo "buid docker image"
-                  sh 'sudo docker build -t public.ecr.aws/b9y2y3b4/ubuntu:latest .'
-                  sh 'sudo docker tag ubuntu:latest public.ecr.aws/b9y2y3b4/ubuntu:latest '
+                  sh 'sudo docker build -t public.ecr.aws/b9y2y3b4/nginx:latest .'
+                  sh 'sudo docker tag nginx:latest public.ecr.aws/b9y2y3b4/nginx:latest '
               
-                 sh 'sudo docker push public.ecr.aws/b9y2y3b4/ubuntu:latest '
+                 sh 'sudo docker push public.ecr.aws/b9y2y3b4/nginx:latest '
                
             }
         }
