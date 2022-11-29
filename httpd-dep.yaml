@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: httpd-container
-        image: public.ecr.aws/b9y2y3b4/demo@sha256:f2f8e87c61c78701277b59757b6e43d531571e4426b512f5248729811508d2de 
+        image: public.ecr.aws/b9y2y3b4/demo:httpd
         ports:
         - containerPort: 8080
         imagepullPolicy: Always
