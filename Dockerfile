@@ -1,4 +1,4 @@
-FROM ubuntu
-WORKDIR /usr/local/apache2/htdocs/
-COPY . /usr/local/apache2/htdocs/
+FROM nginx
+WORKDIR /usr/local/nginx/htdocs/
+COPY . /usr/local/nxinx/htdocs/
 EXPOSE 8080
