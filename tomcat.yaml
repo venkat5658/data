@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-deployment
+  name: nginx-deployment
   labels:
-    app: tomcat
+    app: nginx
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: tomcat
+      app: nginx
   replicas: 2
   template:
     metadata:
       labels:
-        app: tomcat
+        app: nginx
     spec:
       containers:
-      - name: tomcat-container
-        image: nginx:latest
+      - name: nginx-container
+        image: public.ecr.aws/b9y2y3b4/nginx
         ports:
         - containerPort: 8080
        
@@ -25,11 +25,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: tomcat-service
+  name: nginx-service
 spec:
   type: LoadBalancer
   selector:
-    app: tomcat
+    app: nginx
   ports:
   - name: http
     protocol: TCP
@@ -40,7 +40,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: 
-  name: ingress-tomcat
+  name: ingress-nginx
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -53,6 +53,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: tomcat-service
+              name: nginx-service
               port:
                 number: 8080
