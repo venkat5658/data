@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+  labels:
+    app: tomcat
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcat-container
+        image: tomcat:8.0
+        ports:
+        - containerPort: 8080
+       
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: tomcat-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: tomcat
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: 
+  name: ingress-tomcat
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: tomcat-service
+              port:
+                number: 8080
