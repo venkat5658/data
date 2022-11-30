@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: tomcat-container
-        image: public.ecr.aws/b9y2y3b4/nginx:latest
+        image: httpd:latest
         ports:
         - containerPort: 8080
        
